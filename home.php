@@ -16,13 +16,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Cozy WebSite Home page</title>
+    <style>
+        .sub-menu {
+  display: none;
+  position: fixed;
+  text-align: center;
+  top: 27%;
+  left: 34%;
+  transform:translate(-100%,-100%) ;
+  width: 150px;
+  height: 100px;
+  padding-left: 10px;
+  padding-top: 20px;
+  background-color: rgba(255, 255, 255, 0.479);
+        }
+        .sub-menu > a:hover {
+            color: rgb(235, 169, 170); 
+            transition: transform 0.3s ease-in-out;
+
+        }
+        </style>
+    <script>
+        function toggleSubMenu() {
+          var subMenu = document.querySelector('.sub-menu');
+          subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        }
+        </script>
 </head>
 <body>
 
     <nav>
         <ul class="hovs" style="margin-left:20%;">
-            <li class="hov"><a href="./home.html" style="color: rgb(241, 140, 142);">Home</a></li>
-            <li class="hov"><a href="./bio-herbel.html">Products</a></li>
+            <li class="hov"><a onclick="toggleSubMenu()" style="color: rgb(241, 140, 142);">Home</a></li>
+            <li class="hov"><a href="./bio-herbel.php">Products</a></li>
             <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
             <li class="hov"><a href="./login.php">Log in</a></li>
             <li class="hov"><a href="">Blog</a></li>
@@ -39,74 +65,85 @@
             <div class="div1"><img src="./home22.jpg" ></div>
             <div class="div2"><img src="./home1.jpg" ></div>
         </div>
-    
+        <div class="sub-menu">
+            <a href="#P1">popular categorie</a><br>
+            <a href="#P2">trending products</a><br>
+            <a href="#P3">Contact us</a><br>
+            <a href="#P4">Keep on touch</a>
+          </div>
         <div class="quotes">
             <div class="text">
                 <h1>Gentle Makeup<br>Removing Cleanser</h1>
                 <h4>the all new gorgeous collection</h4><br>
-                <button><a href="./bio-herbel.html">View Products</a></button>
+                <button><a href="./bio-herbel.php">View Products</a></button>
             </div>
         </div>
 
-        <div class="categorie">
+        <div class="categorie" id="P1">
             <h3>Shop by categorie</h3>
             <h1>Popular categories</h1>
             <div class="images">
-                <div class="img1"><a href="./bio-herbel.html"><img src="./categ1.jfif" alt=""></a><h3>Bio herbel</h3></div>
+                <div class="img1"><a href="./bio-herbel.php"><img src="./categ1.jfif" alt=""></a><h3>Bio herbel</h3></div>
                 <div class="img2"><a href="./body-lotion.php"><img src="./categ2.jfif" alt=""></a><h3>Body lotion</h3></div>
                 <div class="img3"><a href=""><img src="./categ3.jfif" alt=""></a><h3>Candle-spa</h3></div>
-                <div class="img4"><a href="./skin-care.html"><img src="./categ4.png" alt=""></a><h3>Skincare</h3></div>
+                <div class="img4"><a href="./skin-care.php"><img src="./categ4.png" alt=""></a><h3>Skincare</h3></div>
             </div>
         </div>
     </div>
 
     <div class="border1"></div>
 
-    <div class="trend-prod">
+    <div class="trend-prod" id="P2">
         <h1>Trending Products</h1>
-        <div class="products">
-            <div class="product">
-                <img src="./2.png" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-            <div class="product">
-                <img src="./3.png" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-            <div class="product">
-                <img src="./4.jpg" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-            <div class="product">
-                <img src="./5.jpg" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-            <div class="product">
-                <img src="./6.jpg" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-            <div class="product">
-                <img src="./7.jpg" onclick="toggleProductDescription('Product description text.')">
-                <div class="product-description">
-                    <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                </div>
-            </div>
-        </div> 
-    </div>
+            <table>
+                <tr>
+                  <th><div class="product">
+                    <img src="./2.png" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div>
+                </div></th>
+                  <th><div class="product">
+                    <img src="./3.png" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div>
+                </div></th>
+                  <th><div class="product">
+                    <img src="./4.jpg" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div></div></th>
+                </tr>
+                <tr>
+                  <td><div class="product">
+                    <img src="./5.jpg" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div>
+                </div></td>
+                  <td><div class="product">
+                    <img src="./6.jpg" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div>
+                </div></td>
+                  <td><div class="product">
+                    <img src="./7.jpg" onclick="toggleProductDescription('Product description text.')">
+                    <div class="product-description">
+                        <i class="far fa-heart" onclick="changeIcon(this)"></i>
+                    </div>
+                </div></td>
+                </tr>
+                
+              </table>
+            
+            
+        </div>
 
     <div class="border2"></div>
 
-    <div class="part-4">
+    <div class="part-4" id="P3">
         <h1>Contact Us</h1>
         <form id="form">
             <input type="text"
@@ -121,34 +158,35 @@
             </button>
         </form>
         <?php
-        // <!-- // Connexion à la base de données MySQL -->
-        $conn = mysqli_connect('localhost', 'layel', 'layel1234aya1234', 'projet');
+                // <!-- // Connexion à la base de données MySQL -->
+            $conn = mysqli_connect('localhost', 'team3', 'test123456.II1A', 'projet');
 
-        // <!-- // Vérification de la connexion -->
-        if (!$conn) {
-            die('Erreur de connexion à la base de données');
-        }
+            // <!-- // Vérification de la connexion -->
+            if (!$conn) {
+                die('Erreur de connexion à la base de données');
+            }
 
-        // <!-- // Traitement du formulaire d'inscription -->
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment'])) {
+            //  <!-- // Traitement du formulaire d'inscription -->
+            if (isset($_POST['submit'])) {
             // <!-- // Récupération des données du formulaire -->
-            $nom = $_POST['name'];
+            $name = $_POST['name'];
             $email = $_POST['email'];
-            $phone = $_POST['comment'];
+            $message = $_POST['message'];
+
             // <!-- // Insertion des données de l'utilisateur dans la table "utilisateurs" -->
-            $query = "INSERT INTO contact (name, email,phone,comment) VALUES ('$name', '$email','$comment')";
+            $query = "INSERT INTO contact (name,email,message) VALUES ('$name', '$email','$message')";
             $result = mysqli_query($conn, $query);
 
             // <!-- // Vérification de l'insertion -->
             if ($result) {
-                echo '<script>document.getElementById("message").innerHTML = "message envoyé";</script>';
-            } else {
-                echo '<script>document.getElementById("message").innerHTML = "Erreur lors de l\'envoi";</script>';    }
+            echo "<div class='msgc'>Successful registration</div>";
+            echo "<script>" . "window.location.href='home.php'" . "</script>";
+                }
         }
         ?>
         <div class="border1"></div>
 
-        <footer>
+        <footer id="P4">
             <div class="footer">
                 <div class="contact">
                     <h2>KEEP ON TOUCH</h2>

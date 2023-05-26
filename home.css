@@ -201,6 +201,8 @@ a {
   text-align: center;
   padding-top: 20px;
   font-size: larger;
+
+  
 }
 .trend-prod h1{
   font-family: "Playlist"; src: url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.eot"); src: url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.woff") format("woff"), url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/1fed4454352f201d52b65ca5480afb2d.svg#Playlist") format("svg"); 
@@ -231,15 +233,12 @@ a {
 .product:hover img{
   cursor: pointer;
 }
-.products {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  width: 60%;
-  height: 420px;
-  justify-content: center;
-  margin: auto;
-  gap :60px;
-  padding-top: 30px;
+table {
+  border-spacing: 55px;
+  height: 500px;
+  width: 800px; 
+  margin-left: auto;
+  margin-right: auto;
 }
 .product img{
   display: block;

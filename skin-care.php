@@ -15,8 +15,8 @@
 <body>
     <nav>
         <ul class="hovs" style="margin-left:20%;">
-            <li class="hov"><a href="./home.html">Home</a></li>
-            <li class="hov"><a href="./bio-herbel.html" style="color: rgb(241, 140, 142);">Products</a></li>
+            <li class="hov"><a href="./home.php">Home</a></li>
+            <li class="hov"><a href="./bio-herbel.php" style="color: rgb(241, 140, 142);">Products</a></li>
             <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
             <li class="hov"><a href="./login.php">Log in</a></li>
             <li class="hov"><a href="">Blog</a></li>
@@ -38,85 +38,45 @@
         <div class="box-2">
             <div class="products-container">
                 <ul>
-                    <li><a class="categorie" href="./bio-herbel.html" >Bio-herbel</a></li>
+                    <li><a class="categorie" href="./bio-herbel.php" >Bio-herbel</a></li>
                     <li><a class="categorie" href="./body-lotion.php">Body lotion</a></li>
                     <li><a class="categorie" href="">Candle-spa</a></li>
-                    <li><a class="categorie" href="./skin-care.html"  style="color: rgb(234, 177, 178);">Skin care</a></li>
+                    <li><a class="categorie" href="./skin-care.php"  style="color: rgb(234, 177, 178);">Skin care</a></li>
                 </ul>
                 <hr>
                 <div class="products">
-                    <div class="product" style="grid-area: pd1;" >
-                        <img src="./skin care/524551_3.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd2;">
-                        <img src="./skin care/6011c2a66dfbe10018e0052e.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" id="idd" style="grid-area: pd3;">
-                        <img src="./skin care/61bxLljb4bL._SL1500_.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd4;">
-                        <img src="./skin care/best-cheap-skincare-tools-289540-1602522763559-main.700x0c.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd5;">
-                        <img src="./skin care/best-skincare-brands-285756-1582681963908-main.700x0c.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd6;">
-                        <img src="./skin care/best-skincare-brands-285756-1582682039555-main.700x0c.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd7;">
-                        <img src="./skin care/CL_1-20--20Olay-20Moisturizing-20Cream-20100g_FOP_0308.png" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd8;">
-                        <img src="./skin care/6.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd9;">
-                        <img src="./skin care/ClassicMoisturizer-Front_1474x.jpg"onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd10;">
-                        <img src="./skin care/cnc_381370033424_us_daily_pore_cleanser_5.5oz_00000-min.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd11;">
-                        <img src="./skin care/Custom_Shopify_Size-3_600x.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
-                    <div class="product" style="grid-area: pd12;">
-                        <img src="./skin care/7.jpg" onclick="toggleProductDescription('Product description text.')">
-                        <div class="product-description">
-                            <i class="far fa-heart" onclick="changeIcon(this)"></i>
-                        </div>
-                    </div>
+                <?php
+                    // Establish a database connection
+                    $connection = mysqli_connect('localhost', 'team3', 'test123456.II1A', 'projet');
+
+                    // Check if the connection was successful
+                    if (!$connection) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // Fetch the product data from the database
+                    $sql = "SELECT * FROM skin_care";
+                    $result = mysqli_query($connection, $sql);
+
+                    // Loop through the product data and generate the HTML content
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $productId = $row['id'];
+                        $productName = $row['name'];
+                        $productImage = $row['image'];
+                        $productDescription = $row['description'];
+                        $productPrice = $row['price'];
+
+                        echo '<div class="product">';
+                        echo '<img src="' . $productImage . '" onclick="toggleProductDescription(\'' . $productName . '\', \'' . $productDescription . '\', \'' . $productPrice . '\')">';
+                        echo '<div class="product-description">';
+                        echo '<i class="far fa-heart" onclick="changeIcon(this)"></i>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+
+                    // Close the database connection
+                    mysqli_close($connection);
+                    ?>
                 </div>
             </div>
         </div>
@@ -139,31 +99,36 @@
             </button>
         </form>
         <?php
-// <!-- // Connexion à la base de données MySQL -->
-$conn = mysqli_connect('localhost', 'layel', 'layel1234aya1234', 'projet');
+                // <!-- // Connexion à la base de données MySQL -->
+            $conn = mysqli_connect('localhost', 'team3', 'test123456.II1A', 'projet');
 
-// <!-- // Vérification de la connexion -->
-if (!$conn) {
-    die('Erreur de connexion à la base de données');
-}
+            // <!-- // Vérification de la connexion -->
+            if (!$conn) {
+                die('Erreur de connexion à la base de données');
+            }
 
-// <!-- // Traitement du formulaire d'inscription -->
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment'])) {
-    // <!-- // Récupération des données du formulaire -->
-    $nom = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['comment'];
-    // <!-- // Insertion des données de l'utilisateur dans la table "utilisateurs" -->
-    $query = "INSERT INTO contact (name, email,phone,comment) VALUES ('$name', '$email','$comment')";
-    $result = mysqli_query($conn, $query);
+            //  <!-- // Traitement du formulaire d'inscription -->
+            if (isset($_POST['submit'])) {
+            // <!-- // Récupération des données du formulaire -->
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $message = $_POST['message'];
 
-    // <!-- // Vérification de l'insertion -->
-    if ($result) {
-        echo '<script>document.getElementById("message").innerHTML = "message envoyé";</script>';
-    } else {
-        echo '<script>document.getElementById("message").innerHTML = "Erreur lors de l\'envoi";</script>';    }
-}
-?>
+            // <!-- // Insertion des données de l'utilisateur dans la table "utilisateurs" -->
+            $query = "INSERT INTO contact (name,email,message) VALUES ('$name', '$email','$message')";
+            $result = mysqli_query($conn, $query);
+
+            // <!-- // Vérification de l'insertion -->
+            if ($result) {
+            echo "<div class='msgc'>Successful registration</div>";
+            echo "<script>" . "window.location.href='home.php'" . "</script>";
+                }
+
+            else {
+            echo "<div class='error-msg'>Registration error. Try Again.</div>";
+            }
+        }
+        ?>
     </div>
 
     <div class="border2"></div>
@@ -193,5 +158,61 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['comment']))
     </footer>
     
 </body>
-<script src="./products.js"></script>
+<script>
+    function toggleProductDescription(productName, productDescription, productPrice) {
+    var productImage = event.target;
+    var product = productImage.parentNode;
+    var productDescriptionElement = productImage.nextElementSibling;
+        console.log('hello');
+    if (productImage.classList.contains('active')) {
+        productImage.classList.remove('active');
+        product.classList.remove('trans');
+
+        setTimeout(function() {
+            productImage.style.transform = 'translateX(0)';
+            productDescriptionElement.style.transform = 'translateX(100%)';
+            productDescriptionElement.innerHTML = '';
+        }, 0.4);
+    } else {
+        productImage.classList.add('active');
+        product.classList.add('trans');
+        productDescriptionElement.innerHTML = '<p>'+ '<i class="far fa-heart" onclick="changeIcon(this)"></i><br>' + productName + '<br><br>' + productDescription + '<br><br> prix: ' + productPrice + 'DT</p>';
+        productDescriptionElement.style.display = 'block';
+
+        setTimeout(function() {
+            productDescriptionElement.style.opacity = 1;
+            productImage.style.transform = 'translateX(-50px)';
+            productDescriptionElement.style.transform = 'translate(-65px,-30px)';
+        }, 0.4);
+    }
+}
+
+    function changeIcon(element) {
+        element.classList.toggle("far");
+        element.classList.toggle("fa");
+    }
+
+    const myClassElements = document.querySelectorAll('.product');
+    document.addEventListener('click', function(event) {
+        myClassElements.forEach(function(element) {
+            // Check if the clicked element is the target element or one of its children
+            if (event.target === element || element.contains(event.target)) {
+                return;
+            }
+
+            // Remove the active class from the target element
+            element.classList.remove('trans');
+            const productImage = element.firstElementChild;
+            const productDescription = element.lastElementChild;
+            if (productImage) {
+                productImage.classList.remove('active');
+
+                setTimeout(function() {
+                    productImage.style.transform = 'translateX(0)';
+                    productDescription.style.transform = 'translateX(100%)';
+                }, 0.4);
+            }
+        });
+    });
+</script>
 </html>

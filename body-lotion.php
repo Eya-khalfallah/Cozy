@@ -13,11 +13,11 @@
     <title>Body Lotion</title>
 </head>
 <body>
-
+    <div class="out"></div>
     <nav>
         <ul class="hovs" style="margin-left:20%;">
-            <li class="hov"><a href="./home.html">Home</a></li>
-            <li class="hov"><a href="./bio-herbel.html" style="color: rgb(241, 140, 142);">Products</a></li>
+            <li class="hov"><a href="./home.php">Home</a></li>
+            <li class="hov"><a href="./bio-herbel.php" style="color: rgb(241, 140, 142);">Products</a></li>
             <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
             <li class="hov"><a href="./login.php">Log in</a></li>
             <li class="hov"><a href="">Blog</a></li>
@@ -27,6 +27,13 @@
             <button type="submit" class="go-icon"><i class="fas fa-search"></i></button>
         </form>
     </nav>
+    <div class="filteer">
+    <form method="POST" action="">
+        <input type="text" placeholder="min" name="min_price" />
+        <input type="text" placeholder="max" name="max_price" />
+        <button type="submit" class="fil" name="filter" onclick="filter()">Filter</button>
+    </form>
+                </div>
 
     <div class="container-product">
         <div class="box-1">
@@ -35,15 +42,15 @@
                 <p>All Products:</p>
             </div>
         </div>
-
         <div class="box-2">
             <div class="products-container">
-                <ul>
-                    <li><a class="categorie" href="./bio-herbel.html" >Bio-herbel</a></li>
-                    <li><a class="categorie" href="./body-lotion.html" style="color: rgb(234, 177, 178);">Body lotion</a></li>
+                <ul class="bluur">
+                    <li><a class="categorie" href="./bio-herbel.php" >Bio-herbel</a></li>
+                    <li><a class="categorie" href="./body-lotion.php" style="color: rgb(234, 177, 178);">Body lotion</a></li>
                     <li><a class="categorie" href="">Candle-spa</a></li>
-                    <li><a class="categorie" href="./skin-care.html">Skin care</a></li>
+                    <li><a class="categorie" href="./skin-care.php">Skin care</a></li>
                 </ul>
+                <button class="filter">Filter</button>
                 <hr>
                 <div class="products">
                     <?php
@@ -54,9 +61,9 @@
                     if (!$connection) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-
-                    // Fetch the product data from the database
-                    $sql = "SELECT * FROM products";
+                    if (!isset($_POST['filter'])){
+                        // Fetch the product data from the database
+                    $sql = "SELECT * FROM body_lotion";
                     $result = mysqli_query($connection, $sql);
 
                     // Loop through the product data and generate the HTML content
@@ -74,9 +81,52 @@
                         echo '</div>';
                         echo '</div>';
                     }
+                    
 
                     // Close the database connection
                     mysqli_close($connection);
+                    }
+                    else{
+
+                    // Get the minimum and maximum price values from the user
+                    $minPrice = $_POST['min_price']; // Assuming you receive the values via POST request
+                    $maxPrice = $_POST['max_price'];
+        
+                    // Prepare the SQL query with placeholders for the price values
+                    $sql = "SELECT * FROM body_lotion WHERE price BETWEEN ? AND ?";
+        
+                    // Prepare the statement
+                    $stmt = mysqli_prepare($connection, $sql);
+                    
+                    // Bind the parameter values
+                    mysqli_stmt_bind_param($stmt, "ii", $minPrice, $maxPrice);
+        
+                    // Execute the query
+                    mysqli_stmt_execute($stmt);
+        
+                    // Get the result set
+                    $result = mysqli_stmt_get_result($stmt);
+        
+                    // Loop through the result set and generate the HTML content
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $productName = $row['name'];
+                        $productBrand = $row['brand'];
+                        $productPrice = $row['price'];
+                        $productDescription = $row['description'];
+                        $productImage = $row['image'];
+        
+                        echo '<div class="product">';
+                        echo '<img src="' . $productImage . '" onclick="toggleProductDescription(\'' . $productName . '\', \'' . $productDescription . '\', \'' . $productPrice . '\')">';
+                        echo '<div class="product-description">';
+                        echo '<i class="far fa-heart" onclick="changeIcon(this)"></i>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+        
+                    // Close the statement and the database connection
+                    mysqli_stmt_close($stmt);
+                    mysqli_close($connection);
+                }
                     ?>
                 </div>
             </div>
@@ -100,6 +150,37 @@
                 SEND MESSAGE
             </button>
         </form>
+        <?php
+                // <!-- // Connexion à la base de données MySQL -->
+            $conn = mysqli_connect('localhost', 'team3', 'test123456.II1A', 'projet');
+
+            // <!-- // Vérification de la connexion -->
+            if (!$conn) {
+                die('Erreur de connexion à la base de données');
+            }
+
+            //  <!-- // Traitement du formulaire d'inscription -->
+            if (isset($_POST['submit'])) {
+            // <!-- // Récupération des données du formulaire -->
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $message = $_POST['message'];
+
+            // <!-- // Insertion des données de l'utilisateur dans la table "utilisateurs" -->
+            $query = "INSERT INTO contact (name,email,message) VALUES ('$name', '$email','$message')";
+            $result = mysqli_query($conn, $query);
+
+            // <!-- // Vérification de l'insertion -->
+            if ($result) {
+            echo "<div class='msgc'>Successful registration</div>";
+            echo "<script>" . "window.location.href='home.php'" . "</script>";
+                }
+
+            else {
+            echo "<div class='error-msg'>Registration error. Try Again.</div>";
+            }
+        }
+        ?>
     </div>
 
     <div class="border2"></div>
@@ -134,7 +215,7 @@
     var productImage = event.target;
     var product = productImage.parentNode;
     var productDescriptionElement = productImage.nextElementSibling;
-
+        console.log('hello');
     if (productImage.classList.contains('active')) {
         productImage.classList.remove('active');
         product.classList.remove('trans');
@@ -147,7 +228,7 @@
     } else {
         productImage.classList.add('active');
         product.classList.add('trans');
-        productDescriptionElement.innerHTML = '<p>' + productName + '<br><br>' + productDescription + '<br><br> prix: ' + productPrice + 'DT</p>';
+        productDescriptionElement.innerHTML = '<p>'+ '<i class="far fa-heart" onclick="changeIcon(this)"></i><br>' + productName + '<br><br>' + productDescription + '<br><br> prix: ' + productPrice + 'DT</p>';
         productDescriptionElement.style.display = 'block';
 
         setTimeout(function() {
@@ -157,8 +238,6 @@
         }, 0.4);
     }
 }
-
-
 
     function changeIcon(element) {
         element.classList.toggle("far");
@@ -187,5 +266,31 @@
             }
         });
     });
+    var searchButton = document.getElementsByClassName('filter')[0];
+
+
+    searchButton.addEventListener("click", () => pop());
+
+    function pop(){
+        console.log("salem");
+    let out = document.getElementsByClassName("out")[0];
+    out.style.display = "block";
+    out.addEventListener("click", () => disappear());
+    document.getElementsByClassName("filteer")[0].style.display = "flex";
+    document.getElementsByClassName("container-product")[0].style.filter = "blur(5px)";
+    document.onkeydown = function (e) {
+        if(e.key == "Escape"){
+            disappear();
+        }
+    };
+    }
+    //The disappear() function is used to close the pop-up window.
+    function disappear(){
+        let out = document.getElementsByClassName("out")[0];
+        out.style.display = "none";
+        document.getElementsByClassName("filteer")[0].style.display = "none";
+        document.getElementsByClassName("container-product")[0].style.filter = "none";
+
+    }
 </script>
 </html>
