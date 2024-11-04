@@ -51,9 +51,9 @@
     <nav>
         <ul class="hovs" style="margin-left:20%;">
             <li class="hov"><a onclick="toggleSubMenu()" style="color: rgb(241, 140, 142);">Home</a></li>
-            <li class="hov"><a href="./bio-herbel.php">Products</a></li>
+            <li class="hov"><a href="../herbel/bio-herbel.php">Products</a></li>
             <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
-            <li class="hov"><a href="./login.php">Log in</a></li>
+            <li class="hov"><a href="../auth/login.php">Log in</a></li>
             <li class="hov"><a href="">Blog</a></li>
         </ul>
         <form action="" class="search-box">

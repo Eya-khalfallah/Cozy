@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-rO+919vLgl1UGwJ1TNEKjZo80pTxBMD7jxmB+G3Xq8U6yDgTHS+R6jvlU2Q8f84W4x4Zf/6YYpwzXIm8uyyWig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -45,10 +45,10 @@
         <div class="box-2">
             <div class="products-container">
                 <ul class="bluur">
-                    <li><a class="categorie" href="./bio-herbel.php" >Bio-herbel</a></li>
+                    <li><a class="categorie" href="../herbel//bio-herbel.php" >Bio-herbel</a></li>
                     <li><a class="categorie" href="./body-lotion.php" style="color: rgb(234, 177, 178);">Body lotion</a></li>
                     <li><a class="categorie" href="">Candle-spa</a></li>
-                    <li><a class="categorie" href="./skin-care.php">Skin care</a></li>
+                    <li><a class="categorie" href="../skin care/skin-care.php">Skin care</a></li>
                 </ul>
                 <button class="filter">Filter</button>
                 <hr>

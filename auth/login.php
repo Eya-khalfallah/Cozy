@@ -34,8 +34,8 @@
 <body>
   <nav>
     <ul class="hovs" style="margin-left:20%;">
-      <li class="hov"><a href="./home.php">Home</a></li>
-      <li class="hov"><a href="./bio-herbel.php">Products</a></li>
+      <li class="hov"><a href="../home/home.php">Home</a></li>
+      <li class="hov"><a href="../herbel/bio-herbel.php">Products</a></li>
       <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
       <li class="hov"><a href="./login.php" style="color: rgb(241, 140, 142);">Log in</a></li>
       <li class="hov"><a href="">Blog</a></li>
@@ -147,7 +147,7 @@
         if (password_verify($mot_de_passe, $row['mot_de_passe'])) {
             $_SESSION['nom'] = $nom;
             $_SESSION['email'] = $row['email'];
-            echo "<script>window.location.href='home.php'</script>";
+            echo "<script>window.location.href='../home/home.php'</script>";
             exit();
         } else {
             echo "<div class='error-msg'>Incorrect password. Try Again.</div>";
