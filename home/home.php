@@ -236,6 +236,6 @@
 
     </header>
 </body>
-<script src="./products.js"></script>
+<script src="../products.js"></script>
 
 </html>

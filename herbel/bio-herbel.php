@@ -111,7 +111,7 @@
                     // Loop through the result set and generate the HTML content
                     while ($row = mysqli_fetch_assoc($result)) {
                         $productName = $row['name'];
-                        $productBrand = $row['brand'];
+                      
                         $productPrice = $row['price'];
                         $productDescription = $row['description'];
                         $productImage = $row['image'];

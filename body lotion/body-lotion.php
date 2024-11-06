@@ -16,10 +16,10 @@
     <div class="out"></div>
     <nav>
         <ul class="hovs" style="margin-left:20%;">
-            <li class="hov"><a href="./home.php">Home</a></li>
-            <li class="hov"><a href="./bio-herbel.php" style="color: rgb(241, 140, 142);">Products</a></li>
+            <li class="hov"><a href="../home/home.php">Home</a></li>
+            <li class="hov"><a href="../herbel/bio-herbel.php" style="color: rgb(241, 140, 142);">Products</a></li>
             <li style="font-size: 30px; padding-left: 20px; padding-right: 20px;"><span>Cozy</span></li>
-            <li class="hov"><a href="./login.php">Log in</a></li>
+            <li class="hov"><a href="../auth/login.php">Log in</a></li>
             <li class="hov"><a href="">Blog</a></li>
         </ul>
         <form action="" class="search-box">
@@ -110,7 +110,6 @@
                     // Loop through the result set and generate the HTML content
                     while ($row = mysqli_fetch_assoc($result)) {
                         $productName = $row['name'];
-                        $productBrand = $row['brand'];
                         $productPrice = $row['price'];
                         $productDescription = $row['description'];
                         $productImage = $row['image'];
