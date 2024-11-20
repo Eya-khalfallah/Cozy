@@ -1,6 +1,6 @@
 # Cozy - Cosmetic Products Website
 
-Cozy is an engaging cosmetic products website that allows users to explore, filter, and discover a variety of beauty products. The website offers a smooth browsing experience with features like product filtering, account creation, and regular updates on new arrivals and promotions. Built with PHP, JavaScript, and CSS, Cozy combines a modern design with user-focused functionality.
+Cozy is an engaging cosmetic products website that allows users to explore, filter, and discover a variety of beauty products. The website offers a smooth browsing experience with features like product filtering, account creation, and regular updates on new arrivals and promotions. Built with PHP, HTML, JavaScript, and CSS, Cozy combines a modern design with user-focused functionality.
 
 ## Features
 
@@ -12,7 +12,7 @@ Cozy is an engaging cosmetic products website that allows users to explore, filt
 
 ## Technologies Used
 
-- **Frontend**: JavaScript, CSS
+- **Frontend**: HTML, JavaScript, CSS
 - **Backend**: PHP
 - **Database**: MySQL
 - **Web Server**: XAMPP
